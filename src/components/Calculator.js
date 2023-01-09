@@ -1,11 +1,18 @@
 import React from 'react';
 import './Calculator.css';
+import calculate from '../logic/calculate';
 
 class Calculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
+
+ handleClick = (buttonName) => {
+   this.setState(calculate(
+     (prevState) => ({ ...prevState, ...calculate(prevState, buttonName) }),
+   ));
+ };
 
  handleChange = () => {
    // this.setState({ display: event.target.value });
