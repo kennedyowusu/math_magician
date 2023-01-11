@@ -1,69 +1,57 @@
-import React from 'react';
+import { useState } from 'react';
 import './Calculator.css';
 import calculate from '../logic/calculate';
 
-class Calculator extends React.Component {
-  constructor(props) {
-    super(props);
+const Calculator = () => {
+  const [state, setState] = useState({
+    total: 0,
+    next: 0,
+    operation: '',
+  });
+  const { total, next, operation } = state;
 
-    this.state = {
-      total: 0,
-      next: 0,
-      operation: '',
-    };
+  const handleClick = (e) => {
+    setState(calculate(
+      state,
+      e.target.innerHTML,
+    ));
+  };
 
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  componentDidUpdate() {
-    const { total, next, operation } = this.state;
-    const inputData = document.querySelector('input[name="display"]');
-
-    if (total === null && next === null) {
-      inputData.value = next;
-    } else if (total === null && next !== null) {
-      inputData.value = next;
-    } else if (total !== null && next === null) {
-      inputData.value = total;
-    } else {
-      inputData.value = `${total} ${operation} ${next}`;
-    }
-  }
-
-  handleClick = (e) => {
-    const { total, next, operation } = this.state;
-    this.setState(calculate({ total, next, operation }, e.target.innerHTML));
-  }
-
-  render() {
-    return (
-      <div className="Calculator">
-        <table>
+  return (
+    <div className="Calculator">
+      <table>
+        <tbody>
           <tr className="table-row">
             <td colSpan="4">
-              <input type="text" name="display" readOnly className="outcome" />
+              <input
+                type="text"
+                name="display"
+                readOnly
+                className="outcome"
+                value={next || total || operation || 0}
+              />
             </td>
           </tr>
           <tr>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 AC
               </button>
             </td>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 +/-
               </button>
             </td>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 %
               </button>
             </td>
             <td>
               <button
                 type="button"
-                onClick={this.handleClick}
+                onClick={handleClick}
                 className="btn-operator"
               >
                 ÷
@@ -72,24 +60,24 @@ class Calculator extends React.Component {
           </tr>
           <tr>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 7
               </button>
             </td>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 8
               </button>
             </td>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 9
               </button>
             </td>
             <td>
               <button
                 type="button"
-                onClick={this.handleClick}
+                onClick={handleClick}
                 className="btn-operator"
               >
                 x
@@ -99,24 +87,24 @@ class Calculator extends React.Component {
 
           <tr>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 4
               </button>
             </td>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 5
               </button>
             </td>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 6
               </button>
             </td>
             <td>
               <button
                 type="button"
-                onClick={this.handleClick}
+                onClick={handleClick}
                 className="btn-operator"
               >
                 -
@@ -126,24 +114,24 @@ class Calculator extends React.Component {
 
           <tr>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 1
               </button>
             </td>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 2
               </button>
             </td>
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 3
               </button>
             </td>
             <td>
               <button
                 type="button"
-                onClick={this.handleClick}
+                onClick={handleClick}
                 className="btn-operator"
               >
                 +
@@ -153,13 +141,13 @@ class Calculator extends React.Component {
 
           <tr>
             <td colSpan="2">
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 0
               </button>
             </td>
 
             <td>
-              <button type="button" onClick={this.handleClick}>
+              <button type="button" onClick={handleClick}>
                 .
               </button>
             </td>
@@ -167,17 +155,17 @@ class Calculator extends React.Component {
             <td>
               <button
                 type="button"
-                onClick={this.handleClick}
+                onClick={handleClick}
                 className="btn-operator"
               >
                 =
               </button>
             </td>
           </tr>
-        </table>
-      </div>
-    );
-  }
-}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 export default Calculator;
