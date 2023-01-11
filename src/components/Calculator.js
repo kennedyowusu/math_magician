@@ -8,16 +8,14 @@ const Calculator = () => {
     next: 0,
     operation: '',
   });
+  const { total, next, operation } = state;
 
   const handleClick = (e) => {
-    const outcome = calculate(
+    setState(calculate(
       state,
       e.target.innerHTML,
-    );
-    setState(outcome);
+    ));
   };
-
-  const { total, next, operation } = state;
 
   return (
     <div className="Calculator">
