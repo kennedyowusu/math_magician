@@ -16,38 +16,24 @@ class Calculator extends React.Component {
   }
 
   componentDidUpdate() {
-    const { total, next } = this.state;
-    const inputData = document.querySelector('.outcome');
+    const { total, next, operation } = this.state;
+    const inputData = document.querySelector('input[name="display"]');
 
-    if ((next != null)) {
+    if (total === null && next === null) {
       inputData.value = next;
-    } else if (!Number.isNaN(total)) {
+    } else if (total === null && next !== null) {
+      inputData.value = next;
+    } else if (total !== null && next === null) {
       inputData.value = total;
+    } else {
+      inputData.value = `${total} ${operation} ${next}`;
     }
-
-    // if (total === null && next === null) {
-    //   inputData.value = '0';
-    // } else if (!Number.isNaN(total) === null && next !== null) {
-    //   inputData.value = next;
-    // } else if (!Number.isNaN(total) !== null && next === null) {
-    //   inputData.value = !Number.isNaN(total);
-    // } else {
-    //   inputData.value = `${!Number.isNaN(total)} ${operation} ${next}`;
-    // }
   }
 
   handleClick = (e) => {
-    // this.setState(calculate(
-    //   (prevState) => ({ ...prevState, ...calculate(prevState, buttonName) }),
-    // ));
     const { total, next, operation } = this.state;
     this.setState(calculate({ total, next, operation }, e.target.innerHTML));
   }
-
-  // handleChange = (e) => {
-  //   const { total, next, operation } = this.state;
-  //   this.setState({ total, next, operation }, e.target.value);
-  // }
 
   render() {
     return (
@@ -55,14 +41,7 @@ class Calculator extends React.Component {
         <table>
           <tr className="table-row">
             <td colSpan="4">
-              <input
-                type="text"
-                name="display"
-                // value={this.state.total}
-                // onChange={this.handleChange}
-                // readOnly
-                className="outcome"
-              />
+              <input type="text" name="display" readOnly className="outcome" />
             </td>
           </tr>
           <tr>
@@ -87,7 +66,7 @@ class Calculator extends React.Component {
                 onClick={this.handleClick}
                 className="btn-operator"
               >
-                /
+                ÷
               </button>
             </td>
           </tr>
@@ -113,7 +92,7 @@ class Calculator extends React.Component {
                 onClick={this.handleClick}
                 className="btn-operator"
               >
-                *
+                x
               </button>
             </td>
           </tr>
