@@ -11,7 +11,7 @@ const Calculator = () => {
 
   const handleClick = (e) => {
     const outcome = calculate(
-      { total: state.total, next: state.next, operation: state.operation },
+      state,
       e.target.innerHTML,
     );
     setState(outcome);
@@ -30,7 +30,7 @@ const Calculator = () => {
                 name="display"
                 readOnly
                 className="outcome"
-                value={total || next || operation}
+                value={next || total || operation || 0}
               />
             </td>
           </tr>
