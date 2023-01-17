@@ -142,7 +142,13 @@ ul {
   font-size: 18px;
   color: #000;
   text-align: justify;
-
-  /* margin: 15rem 5rem; */
   padding: 8rem 20rem;
+}
+
+.active {
+  color: #563838;
+  font-weight: bold;
+  padding: 3px;
+  border: 1px solid #563838;
+  border-radius: 3px;
 }
