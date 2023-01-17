@@ -12,10 +12,17 @@ body {
 a {
   text-decoration: none;
   color: #000;
+  list-style: none;
 }
 
 li a {
+  text-decoration: none;
+  color: #000;
   list-style: none;
+}
+
+ul {
+ list-style-type: none; 
 }
 
 .navbar {
