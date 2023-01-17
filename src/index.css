@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  color: #000;
+  list-style: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.navbar {
+  background-color: #f2f2f2;
+  color: #fff;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar,
+.home {
+  padding: 0 30px;
+}
+
+.brand {
+  font-size: 24px;
+  color: #000;
+  list-style-type: none;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+}
+
+.list-items {
+  margin: 0 10px;
+}
+
+.list-items a {
+  color: #000;
+}
+
+.list-items a:hover {
+  color: #563838;
+  font-weight: bold;
+}
+
+.home {
+  background-color: #f2f2f2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.home-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+  align-items: flex-start;
+  margin: 30px 0;
+}
+
+.home-text {
+  font-size: 16px;
+  color: #000;
+  margin: 20px 0;
+  text-align: justify;
+}
+
+.home-text-second {
+  font-size: 16px;
+  color: #000;
+  text-align: justify;
+}
+
+.pipe {
+  width: 100%;
+  color: #000;
+  margin: 20px 0;
+}
+
+.calc-container {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.left-half {
+  width: 50%;
+  padding: 6rem 30px;
+  text-align: start;
+}
+
+.right-half {
+  width: 50%;
+  border: 2px solid #563838;
+  margin-right: 40px;
+  margin-top: 80px;
+}
+
+.calc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.calc-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.quote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-text {
+  font-size: 18px;
+  color: #000;
+  text-align: justify;
+  padding: 8rem 20rem;
+}
+
+.active {
+  color: #563838;
+  font-weight: bold;
+  padding: 3px;
+  border: 1px solid #563838;
+  border-radius: 3px;
+}
